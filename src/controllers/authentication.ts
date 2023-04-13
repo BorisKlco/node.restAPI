@@ -33,7 +33,7 @@ export const login = async (req: express.Request, res: express.Response) => {
 
     await user.save();
 
-    res.cookie("node-restapi-auth", user.authentication.sessionToken, {
+    res.cookie("NODE-RESTAPI-AUTH", user.authentication.sessionToken, {
       domain: "localhost",
     });
 
