@@ -6,6 +6,7 @@ import express from "express";
 import http from "http";
 import mongoose, { Error } from "mongoose";
 import { MONGO_PASSWORD, MONGO_SERVER, MONGO_USERNAME } from "../mongo";
+import router from "./router";
 
 const app = express();
 const MONGO_URL =
@@ -36,3 +37,5 @@ server.listen(9900, () => {
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
+
+app.use("/", router());
