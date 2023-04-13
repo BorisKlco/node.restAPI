@@ -8,19 +8,19 @@ export const isAuthenticated = async (
   next: express.NextFunction
 ) => {
   try {
-    const sessionToken = req.cookies['NODE-RESTAPI-AUTH']
+    const sessionToken = req.cookies["NODE-RESTAPI-AUTH"];
 
     if (!sessionToken) {
-      return res.sendStatus(403)
+      return res.sendStatus(403);
     }
 
-    const existingUser = await getUserBySessionToken(sessionToken)
+    const existingUser = await getUserBySessionToken(sessionToken);
 
     if (!existingUser) {
       return res.sendStatus(403);
     }
 
-    merge(req, { identity: existingUser})
+    merge(req, { identity: existingUser });
 
     return next();
   } catch (error) {
